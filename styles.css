@@ -1,0 +1,112 @@
+/* Custom CSS for additional styling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+}
+
+/* Dark mode switch */
+#darkModeToggle {
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#darkModeToggle:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+#darkModeToggle span {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#darkModeToggle:active span {
+  width: 1.25rem;
+}
+
+/* Dark mode transition */
+.transition-colors {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effects */
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Skill tags */
+.skill-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+}
+
+/* Contact form improvements */
+.contact-form input,
+.contact-form textarea {
+  transition: all 0.2s ease;
+}
+
+input,
+textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Dark mode specific form styles */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  opacity: 0.6;
+}
+
+.dark input:focus,
+.dark textarea:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Form button hover effect */
+button[type="submit"] {
+  transition: all 0.2s ease;
+}
+
+button[type="submit"]:hover i {
+  transform: translateX(2px);
+}
+
+button[type="submit"] i {
+  transition: transform 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav div {
+    margin-top: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
