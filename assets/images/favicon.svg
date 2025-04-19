@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="32" height="32" rx="6" fill="#2563EB"/>
+    
+    <!-- VKA Letters -->
+    <path d="M8 8L13 24H15L20 8H18L14 21L10 8H8Z" fill="white"/> <!-- V -->
+    <path d="M19 8H21L24 16L27 8H29L25 19H23L19 8Z" fill="white"/> <!-- K -->
+    <path d="M6 19L12 19L12 17L8 17L8 14L11 14L11 12L8 12L8 10L12 10L12 8L6 8L6 19Z" fill="white"/> <!-- A -->
+    
+    <!-- Circuit Board Lines -->
+    <path d="M4 26H28" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M16 26V28" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M8 26V28" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M24 26V28" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+</svg>
