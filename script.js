@@ -3,6 +3,7 @@ function initDarkMode() {
   const darkModeToggle = document.getElementById("darkModeToggle");
   const html = document.documentElement;
 
+<<<<<<< HEAD
   // Helper to update sun/moon icon visibility
   function updateIcons(isDark) {
     if (!darkModeToggle) return;
@@ -12,6 +13,8 @@ function initDarkMode() {
     if (moonIcon) moonIcon.classList.toggle("hidden", !isDark);
   }
 
+=======
+>>>>>>> 715a04adb1387d3d0eecb87647b80fabdb55c346
   // Check for saved dark mode preference
   let isDark = false;
   if (
@@ -23,6 +26,14 @@ function initDarkMode() {
     isDark = true;
   }
   updateIcons(isDark);
+=======
+    (!localStorage.getItem("darkMode") &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    html.classList.add("dark");
+    darkModeToggle.classList.add("dark-mode-on");
+    isDark = true;
+  }
 
   // Ensure toggle button is styled correctly on load
   if (darkModeToggle) {
@@ -254,11 +265,11 @@ function openProjectModal(projectId) {
   // Get project details
   const project = projectDetails[projectId];
   if (!project) {
-    console.error("Project not found:", projectId);
+    console.error('Project not found:', projectId);
     return;
   }
 
-  console.log("Project details:", project);
+  console.log('Project details:', project);
 
   // Generate modal content
   content.innerHTML = `
