@@ -3,7 +3,6 @@ function initDarkMode() {
   const darkModeToggle = document.getElementById("darkModeToggle");
   const html = document.documentElement;
 
-<<<<<<< HEAD
   // Helper to update sun/moon icon visibility
   function updateIcons(isDark) {
     if (!darkModeToggle) return;
@@ -13,27 +12,18 @@ function initDarkMode() {
     if (moonIcon) moonIcon.classList.toggle("hidden", !isDark);
   }
 
-=======
->>>>>>> 715a04adb1387d3d0eecb87647b80fabdb55c346
   // Check for saved dark mode preference
   let isDark = false;
   if (
     localStorage.getItem("darkMode") === "true" ||
-    !localStorage.getItem("darkMode") // Force dark mode by default on first visit
+    (!localStorage.getItem("darkMode") &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     html.classList.add("dark");
     if (darkModeToggle) darkModeToggle.classList.add("dark-mode-on");
     isDark = true;
   }
   updateIcons(isDark);
-=======
-    (!localStorage.getItem("darkMode") &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    html.classList.add("dark");
-    darkModeToggle.classList.add("dark-mode-on");
-    isDark = true;
-  }
 
   // Ensure toggle button is styled correctly on load
   if (darkModeToggle) {
