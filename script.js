@@ -352,14 +352,9 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-// Prevent browser from restoring scroll position on reload
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-
 // Fix: Ensure anchor scroll lands at the top, even with AOS or dynamic content
 function fixAnchorScrollOffset() {
-  // Only run scroll fix on click, not on page load unless there is a hash
+  // Only run scroll fix on click, never on page load
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
@@ -378,20 +373,6 @@ function fixAnchorScrollOffset() {
       }
     });
   });
-
-  // On page load, only scroll if there is a hash in the URL
-  if (window.location.hash && window.location.hash.length > 1) {
-    const target = document.querySelector(window.location.hash);
-    if (target) {
-      setTimeout(() => {
-        const y = target.getBoundingClientRect().top + window.scrollY - parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop || 0);
-        window.scrollTo({ top: y, behavior: 'auto' });
-      }, 400); // Wait for AOS/layout
-    }
-  } else {
-    // If no hash, force scroll to top after page load (for hard refresh)
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  }
 }
 
 // Initialize everything when DOM is loaded
