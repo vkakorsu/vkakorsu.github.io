@@ -375,6 +375,22 @@ function fixAnchorScrollOffset() {
   });
 }
 
+// --- Scroll Position Persistence ---
+// Save scroll position before page unload
+window.addEventListener('beforeunload', function () {
+  sessionStorage.setItem('scrollPosition', window.scrollY);
+});
+
+// Restore scroll position after DOM is loaded
+window.addEventListener('DOMContentLoaded', function () {
+  const scrollY = sessionStorage.getItem('scrollPosition');
+  if (scrollY !== null) {
+    window.scrollTo(0, parseInt(scrollY, 10));
+    // Optionally clear the scroll position after restoring
+    // sessionStorage.removeItem('scrollPosition');
+  }
+});
+
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   initDarkMode();
