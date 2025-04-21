@@ -3,17 +3,26 @@ function initDarkMode() {
   const darkModeToggle = document.getElementById("darkModeToggle");
   const html = document.documentElement;
 
+  // Helper to update sun/moon icon visibility
+  function updateIcons(isDark) {
+    if (!darkModeToggle) return;
+    const sunIcon = darkModeToggle.querySelector(".fa-sun");
+    const moonIcon = darkModeToggle.querySelector(".fa-moon");
+    if (sunIcon) sunIcon.classList.toggle("hidden", isDark);
+    if (moonIcon) moonIcon.classList.toggle("hidden", !isDark);
+  }
+
   // Check for saved dark mode preference
   let isDark = false;
   if (
     localStorage.getItem("darkMode") === "true" ||
-    (!localStorage.getItem("darkMode") &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
+    (!localStorage.getItem("darkMode")) // Force dark mode by default on first visit
   ) {
     html.classList.add("dark");
-    darkModeToggle.classList.add("dark-mode-on");
+    if (darkModeToggle) darkModeToggle.classList.add("dark-mode-on");
     isDark = true;
   }
+  updateIcons(isDark);
 
   // Ensure toggle button is styled correctly on load
   if (darkModeToggle) {
@@ -39,6 +48,7 @@ function initDarkMode() {
           ? "translateX(0.25rem)"
           : "translateX(1.5rem)";
       }
+      updateIcons(!isDark);
     });
   } else {
     console.error("Dark mode toggle button not found");
