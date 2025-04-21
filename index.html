@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQY8DL5G6M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TQY8DL5G6M');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vincent Kofi Akorsu | Personal Website</title>
@@ -47,11 +55,12 @@
       <!-- Navigation -->
       <nav class="py-3 md:py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm sticky top-0 z-40 transition-colors duration-200">
         <div class="flex flex-col md:flex-row items-center justify-center w-full">
-          <!-- Mobile menu button: Move to right for thumb reach -->
-          <div class="flex w-full md:w-auto justify-end md:justify-center">
+          <!-- Mobile Initials (left) -->
+          <div class="flex w-full items-center justify-between md:hidden mb-2 md:mb-0">
+            <span class="text-3xl font-bold text-primary-700 pl-2 font-montserrat">VKA</span>
             <button
               id="mobile-menu-button"
-              class="md:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label="Toggle menu"
             >
               <i class="fas fa-bars text-2xl"></i>

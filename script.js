@@ -87,12 +87,29 @@ function initMobileMenu() {
   const mobileMenu = document.getElementById("mobile-menu");
 
   mobileMenuButton.addEventListener("click", () => {
+    const isMenuOpen = !mobileMenu.classList.contains("hidden");
     mobileMenu.classList.toggle("hidden");
-    // Optional: Animate the menu icon
+    // Animate the menu icon
     const menuIcon = mobileMenuButton.querySelector("i");
-    menuIcon.classList.toggle("fa-bars");
-    menuIcon.classList.toggle("fa-times");
+    if (isMenuOpen) {
+      menuIcon.classList.remove("fa-times");
+      menuIcon.classList.add("fa-bars");
+    } else {
+      menuIcon.classList.remove("fa-bars");
+      menuIcon.classList.add("fa-times");
+    }
   });
+
+  // Handle X button inside mobile menu
+  const closeMenuBtn = mobileMenu.querySelector("[aria-label='Close menu']");
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      const menuIcon = mobileMenuButton.querySelector("i");
+      menuIcon.classList.remove("fa-times");
+      menuIcon.classList.add("fa-bars");
+    });
+  }
 
   // Close mobile menu when clicking a link
   const mobileMenuLinks = mobileMenu.querySelectorAll("a");
