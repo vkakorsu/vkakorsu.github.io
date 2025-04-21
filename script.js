@@ -1,15 +1,34 @@
 // Dark mode handling
 function initDarkMode() {
   const darkModeToggle = document.getElementById("darkModeToggle");
+  const darkModeToggleMobile = document.getElementById("darkModeToggleMobile");
   const html = document.documentElement;
 
-  // Helper to update sun/moon icon visibility
+  // Helper to update sun/moon icon visibility for both toggles
   function updateIcons(isDark) {
-    if (!darkModeToggle) return;
-    const sunIcon = darkModeToggle.querySelector(".fa-sun");
-    const moonIcon = darkModeToggle.querySelector(".fa-moon");
-    if (sunIcon) sunIcon.classList.toggle("hidden", isDark);
-    if (moonIcon) moonIcon.classList.toggle("hidden", !isDark);
+    [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
+      if (!toggle) return;
+      const sunIcon = toggle.querySelector(".fa-sun");
+      const moonIcon = toggle.querySelector(".fa-moon");
+      if (sunIcon) sunIcon.classList.toggle("hidden", isDark);
+      if (moonIcon) moonIcon.classList.toggle("hidden", !isDark);
+    });
+  }
+
+  // Helper to update toggle button UI for both toggles
+  function updateToggleUI(isDark) {
+    [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
+      if (!toggle) return;
+      toggle.classList.toggle("dark-mode-on", isDark);
+      toggle.style.backgroundColor = isDark ? "#3b82f6" : "#f3f4f6";
+      const toggleThumb = toggle.querySelector(".toggle-thumb");
+      if (toggleThumb) {
+        toggleThumb.style.transform = isDark
+          ? "translateX(1.5rem)"
+          : "translateX(0.25rem)";
+      }
+    });
+    updateIcons(isDark);
   }
 
   // Check for saved dark mode preference
@@ -19,40 +38,24 @@ function initDarkMode() {
     !localStorage.getItem("darkMode") // Default to dark mode if no preference
   ) {
     html.classList.add("dark");
-    if (darkModeToggle) darkModeToggle.classList.add("dark-mode-on");
     isDark = true;
-  }
-  updateIcons(isDark);
-
-  // Ensure toggle button is styled correctly on load
-  if (darkModeToggle) {
-    // Set initial background color
-    darkModeToggle.style.backgroundColor = isDark ? "#3b82f6" : "#f3f4f6";
-    // Set initial toggle thumb position
-    const toggleThumb = darkModeToggle.querySelector(".toggle-thumb");
-    if (toggleThumb) {
-      toggleThumb.style.transform = isDark
-        ? "translateX(1.5rem)"
-        : "translateX(0.25rem)";
-    }
-    // Add event listener as before
-    darkModeToggle.addEventListener("click", () => {
-      const isDark = html.classList.contains("dark");
-      html.classList.toggle("dark");
-      localStorage.setItem("darkMode", html.classList.contains("dark"));
-      darkModeToggle.classList.toggle("dark-mode-on");
-      darkModeToggle.style.backgroundColor = isDark ? "#f3f4f6" : "#3b82f6";
-      const toggleThumb = darkModeToggle.querySelector(".toggle-thumb");
-      if (toggleThumb) {
-        toggleThumb.style.transform = isDark
-          ? "translateX(0.25rem)"
-          : "translateX(1.5rem)";
-      }
-      updateIcons(!isDark);
-    });
   } else {
-    console.error("Dark mode toggle button not found");
+    html.classList.remove("dark");
+    isDark = false;
   }
+  updateToggleUI(isDark);
+
+  // Add event listeners to both toggles
+  [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
+    if (!toggle) return;
+    toggle.addEventListener("click", () => {
+      const isDarkNow = html.classList.contains("dark");
+      html.classList.toggle("dark");
+      const newIsDark = !isDarkNow;
+      localStorage.setItem("darkMode", newIsDark);
+      updateToggleUI(newIsDark);
+    });
+  });
 }
 
 // Dynamic Tagline
@@ -100,38 +103,6 @@ function initMobileMenu() {
       menuIcon.classList.add("fa-bars");
     });
   });
-}
-
-// Sync dark mode toggle between desktop and mobile
-function initDarkModeMobile() {
-  const darkModeToggleMobile = document.getElementById("darkModeToggleMobile");
-  const html = document.documentElement;
-
-  if (darkModeToggleMobile) {
-    darkModeToggleMobile.addEventListener("click", () => {
-      const isDark = html.classList.contains("dark");
-
-      // Toggle dark mode
-      html.classList.toggle("dark");
-      localStorage.setItem("darkMode", html.classList.contains("dark"));
-
-      // Update toggle button
-      darkModeToggleMobile.classList.toggle("dark-mode-on");
-
-      // Update button colors
-      darkModeToggleMobile.style.backgroundColor = isDark
-        ? "#f3f4f6"
-        : "#3b82f6";
-
-      // Update toggle thumb position
-      const toggleThumb = darkModeToggleMobile.querySelector(".toggle-thumb");
-      if (toggleThumb) {
-        toggleThumb.style.transform = isDark
-          ? "translateX(0.25rem)"
-          : "translateX(1.5rem)";
-      }
-    });
-  }
 }
 
 // Form handling
@@ -384,7 +355,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initDarkMode();
   initTaglineAnimation();
   initMobileMenu();
-  initDarkModeMobile();
   initContactForm();
   initGoUpButton();
 
