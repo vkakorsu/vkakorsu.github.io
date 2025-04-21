@@ -16,8 +16,7 @@ function initDarkMode() {
   let isDark = false;
   if (
     localStorage.getItem("darkMode") === "true" ||
-    (!localStorage.getItem("darkMode") &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
+    !localStorage.getItem("darkMode") // Default to dark mode if no preference
   ) {
     html.classList.add("dark");
     if (darkModeToggle) darkModeToggle.classList.add("dark-mode-on");
@@ -255,11 +254,11 @@ function openProjectModal(projectId) {
   // Get project details
   const project = projectDetails[projectId];
   if (!project) {
-    console.error('Project not found:', projectId);
+    console.error("Project not found:", projectId);
     return;
   }
 
-  console.log('Project details:', project);
+  console.log("Project details:", project);
 
   // Generate modal content
   content.innerHTML = `

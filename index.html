@@ -15,8 +15,7 @@
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       if (
         localStorage.getItem("darkMode") === "true" ||
-        (!localStorage.getItem("darkMode") &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
+        !localStorage.getItem("darkMode")
       ) {
         document.documentElement.classList.add("dark");
       }
