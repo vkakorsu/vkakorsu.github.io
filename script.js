@@ -10,10 +10,10 @@ function initDarkMode() {
       if (!toggle) return;
       const sunIcon = toggle.querySelector(".fa-sun");
       const moonIcon = toggle.querySelector(".fa-moon");
-      // Show sun icon in dark mode (to indicate you can switch to light)
-      if (sunIcon) sunIcon.classList.toggle("hidden", !isDark);
-      // Show moon icon in light mode (to indicate you can switch to dark)
-      if (moonIcon) moonIcon.classList.toggle("hidden", isDark);
+      // Show sun icon in light mode (to indicate it is light)
+      if (sunIcon) sunIcon.classList.toggle("hidden", isDark);
+      // Show moon icon in dark mode (to indicate it is dark)
+      if (moonIcon) moonIcon.classList.toggle("hidden", !isDark);
     });
   }
 
