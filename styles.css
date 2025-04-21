@@ -1,7 +1,7 @@
 /* Custom CSS for additional styling */
-html {
+html, html.scroll-smooth {
   scroll-behavior: smooth;
-  scroll-padding-top: 4.5rem; /* Adjust to match/stay above navbar height */
+  scroll-padding-top: 4.5rem !important; /* Ensure it overrides Tailwind */
 }
 
 body {

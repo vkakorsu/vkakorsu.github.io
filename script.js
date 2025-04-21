@@ -352,6 +352,28 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// Fix: Ensure anchor scroll lands at the top, even with AOS or dynamic content
+function fixAnchorScrollOffset() {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (!href || href.length < 2 || href === '#' || href.startsWith('#!')) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      // Only handle in-page navigation
+      if (location.pathname === this.pathname && location.hostname === this.hostname) {
+        e.preventDefault();
+        // Let AOS or layout changes finish, then scroll
+        setTimeout(() => {
+          const y = target.getBoundingClientRect().top + window.scrollY - parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop || 0);
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 350); // 350ms matches AOS default duration
+      }
+    });
+  });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   initDarkMode();
@@ -366,4 +388,6 @@ document.addEventListener("DOMContentLoaded", () => {
     once: true,
     offset: 100,
   });
+
+  fixAnchorScrollOffset();
 });
