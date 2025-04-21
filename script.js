@@ -408,6 +408,54 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Highlight navbar link for current section
+function initNavbarHighlight() {
+  const sectionIds = [
+    "about",
+    "skills",
+    "experience",
+    "education",
+    "projects",
+    "achievements",
+    "publications",
+    "testimonials",
+    "hobbies",
+    "contact"
+  ];
+  const navLinks = {};
+  sectionIds.forEach((id) => {
+    const link = document.querySelectorAll(
+      `a[href='#${id}']`
+    );
+    navLinks[id] = link;
+  });
+
+  function onScroll() {
+    let currentSection = sectionIds[0];
+    for (let i = 0; i < sectionIds.length; i++) {
+      const section = document.getElementById(sectionIds[i]);
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 80) {
+          currentSection = sectionIds[i];
+        }
+      }
+    }
+    sectionIds.forEach((id) => {
+      navLinks[id].forEach((link) => {
+        if (id === currentSection) {
+          link.classList.add("text-blue-600", "dark:text-blue-400", "font-bold");
+        } else {
+          link.classList.remove("text-blue-600", "dark:text-blue-400", "font-bold");
+        }
+      });
+    });
+  }
+  window.addEventListener("scroll", onScroll);
+  // Initial highlight
+  onScroll();
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   initDarkMode();
@@ -415,6 +463,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initContactForm();
   initGoUpButton();
+  initNavbarHighlight();
 
   // Initialize AOS
   AOS.init({
