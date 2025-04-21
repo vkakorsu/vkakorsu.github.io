@@ -44,18 +44,18 @@
   >
     <div class="container mx-auto px-4 max-w-6xl">
       <!-- Navigation -->
-      <nav class="py-6">
-        <div class="flex justify-between items-center">
-          <div class="text-2xl font-bold">Vincent Kofi Akorsu</div>
-
-          <!-- Mobile menu button -->
-          <button
-            id="mobile-menu-button"
-            class="md:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-            aria-label="Toggle menu"
-          >
-            <i class="fas fa-bars text-2xl"></i>
-          </button>
+      <nav class="py-3 md:py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm sticky top-0 z-40 transition-colors duration-200">
+        <div class="flex flex-col md:flex-row items-center justify-center w-full">
+          <!-- Mobile menu button: Move to right for thumb reach -->
+          <div class="flex w-full md:w-auto justify-end md:justify-center">
+            <button
+              id="mobile-menu-button"
+              class="md:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              aria-label="Toggle menu"
+            >
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
 
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center space-x-6">
@@ -80,14 +80,14 @@
               >Projects</a
             >
             <a
-              href="#publications"
-              class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-              >Publications</a
-            >
-            <a
               href="#achievements"
               class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
               >Achievements</a
+            >
+            <a
+              href="#publications"
+              class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              >Publications</a
             >
             <a
               href="#hobbies"
@@ -127,8 +127,16 @@
         <div
           id="mobile-menu"
           class="hidden md:hidden mt-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg"
+          style="right: 0; left: auto; position: fixed; top: 0; height: 100vh; width: 80vw; max-width: 320px; z-index: 50;"
         >
           <div class="flex flex-col space-y-3 p-4">
+            <button
+              onclick="document.getElementById('mobile-menu').classList.add('hidden');"
+              class="self-end mb-4 p-2 text-2xl text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none"
+              aria-label="Close menu"
+            >
+              <i class="fas fa-times"></i>
+            </button>
             <a
               href="#about"
               class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
@@ -150,14 +158,14 @@
               >Projects</a
             >
             <a
-              href="#publications"
-              class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-              >Publications</a
-            >
-            <a
               href="#achievements"
               class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
               >Achievements</a
+            >
+            <a
+              href="#publications"
+              class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              >Publications</a
             >
             <a
               href="#hobbies"
@@ -870,6 +878,65 @@
         </div>
       </section>
 
+      <!-- Achievements Section -->
+      <section
+        id="achievements"
+        class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-8 mb-8"
+        data-aos="fade-up"
+      >
+        <h2 class="text-3xl font-semibold mb-4">Achievements & Awards</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
+            <div class="flex items-center mb-2">
+              <i class="fas fa-trophy text-yellow-500 mr-3 text-xl"></i>
+              <h3 class="text-xl font-semibold">Best Systems Engineer Award</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400">Company Name | 2023</p>
+            <p class="text-gray-700 dark:text-gray-300 mt-2">
+              Recognized for exceptional contributions to system optimization
+              and performance improvements.
+            </p>
+          </div>
+
+          <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
+            <div class="flex items-center mb-2">
+              <i class="fas fa-medal text-blue-500 mr-3 text-xl"></i>
+              <h3 class="text-xl font-semibold">Social Justice Scholar</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400">
+              Loyola University New Orleans | August 2025
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mt-2">
+              Selected from a competitive applicant pool for a merit-based
+              program recognizing commitment to social justice, community
+              service, and academic excellence. Award includes a $3,000 annual
+              scholarship and participation in a cohort of student leaders
+              dedicated to civic engagement. Program requirements include a
+              sociology major or minor and completing 30–35 hours of service per
+              semester with local community organizations.
+            </p>
+          </div>
+
+          <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
+            <div class="flex items-center mb-2">
+              <i class="fas fa-award text-green-500 mr-3 text-xl"></i>
+              <h3 class="text-xl font-semibold">Ignatian Scholarship</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400">
+              Loyola University New Orleans | August 2025
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mt-2">
+              Awarded Loyola’s most prestigious merit-based scholarship covering
+              full tuition, fees, on-campus housing, and meals. Granted to
+              top-tier students based on academic excellence, demonstrated
+              leadership, and service potential. Selected among a highly
+              competitive applicant pool as part of admission to the University
+              Honors Program.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- Publications Section -->
       <section
         id="publications"
@@ -1000,65 +1067,6 @@
           </div>
 
           <!-- Add more publications here -->
-        </div>
-      </section>
-
-      <!-- Achievements Section -->
-      <section
-        id="achievements"
-        class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-8 mb-8"
-        data-aos="fade-up"
-      >
-        <h2 class="text-3xl font-semibold mb-4">Achievements & Awards</h2>
-        <div class="space-y-6">
-          <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
-            <div class="flex items-center mb-2">
-              <i class="fas fa-trophy text-yellow-500 mr-3 text-xl"></i>
-              <h3 class="text-xl font-semibold">Best Systems Engineer Award</h3>
-            </div>
-            <p class="text-gray-600 dark:text-gray-400">Company Name | 2023</p>
-            <p class="text-gray-700 dark:text-gray-300 mt-2">
-              Recognized for exceptional contributions to system optimization
-              and performance improvements.
-            </p>
-          </div>
-
-          <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
-            <div class="flex items-center mb-2">
-              <i class="fas fa-medal text-blue-500 mr-3 text-xl"></i>
-              <h3 class="text-xl font-semibold">Social Justice Scholar</h3>
-            </div>
-            <p class="text-gray-600 dark:text-gray-400">
-              Loyola University New Orleans | August 2025
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 mt-2">
-              Selected from a competitive applicant pool for a merit-based
-              program recognizing commitment to social justice, community
-              service, and academic excellence. Award includes a $3,000 annual
-              scholarship and participation in a cohort of student leaders
-              dedicated to civic engagement. Program requirements include a
-              sociology major or minor and completing 30–35 hours of service per
-              semester with local community organizations.
-            </p>
-          </div>
-
-          <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
-            <div class="flex items-center mb-2">
-              <i class="fas fa-award text-green-500 mr-3 text-xl"></i>
-              <h3 class="text-xl font-semibold">Ignatian Scholarship</h3>
-            </div>
-            <p class="text-gray-600 dark:text-gray-400">
-              Loyola University New Orleans | August 2025
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 mt-2">
-              Awarded Loyola’s most prestigious merit-based scholarship covering
-              full tuition, fees, on-campus housing, and meals. Granted to
-              top-tier students based on academic excellence, demonstrated
-              leadership, and service potential. Selected among a highly
-              competitive applicant pool as part of admission to the University
-              Honors Program.
-            </p>
-          </div>
         </div>
       </section>
 

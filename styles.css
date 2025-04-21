@@ -1,6 +1,7 @@
 /* Custom CSS for additional styling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem; /* Adjust to match/stay above navbar height */
 }
 
 body {
