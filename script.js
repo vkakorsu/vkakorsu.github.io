@@ -16,7 +16,7 @@ function initDarkMode() {
   let isDark = false;
   if (
     localStorage.getItem("darkMode") === "true" ||
-    (!localStorage.getItem("darkMode")) // Force dark mode by default on first visit
+    !localStorage.getItem("darkMode") // Force dark mode by default on first visit
   ) {
     html.classList.add("dark");
     if (darkModeToggle) darkModeToggle.classList.add("dark-mode-on");
@@ -241,24 +241,24 @@ const projectDetails = {
 
 // Open project modal
 function openProjectModal(projectId) {
-  console.log('Opening modal for project:', projectId);
+  console.log("Opening modal for project:", projectId);
   const modal = document.getElementById("projectModal");
   const modalContent = modal.querySelector(".relative");
   const content = document.getElementById("modalContentInner");
 
   if (!modal || !modalContent || !content) {
-    console.error('Modal elements not found');
+    console.error("Modal elements not found");
     return;
   }
 
   // Get project details
   const project = projectDetails[projectId];
   if (!project) {
-    console.error('Project not found:', projectId);
+    console.error("Project not found:", projectId);
     return;
   }
 
-  console.log('Project details:', project);
+  console.log("Project details:", project);
 
   // Generate modal content
   content.innerHTML = `
