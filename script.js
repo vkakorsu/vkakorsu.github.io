@@ -373,19 +373,28 @@ document.addEventListener("keydown", function (e) {
 function fixAnchorScrollOffset() {
   // Only run scroll fix on click, never on page load
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (!href || href.length < 2 || href === '#' || href.startsWith('#!')) return;
+    anchor.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (!href || href.length < 2 || href === "#" || href.startsWith("#!"))
+        return;
       const target = document.querySelector(href);
       if (!target) return;
 
       // Only handle in-page navigation
-      if (location.pathname === this.pathname && location.hostname === this.hostname) {
+      if (
+        location.pathname === this.pathname &&
+        location.hostname === this.hostname
+      ) {
         e.preventDefault();
         setTimeout(() => {
-          const y = target.getBoundingClientRect().top + window.scrollY - parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop || 0);
-          window.scrollTo({ top: y, behavior: 'smooth' });
-          history.replaceState(null, '', href);
+          const y =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            parseFloat(
+              getComputedStyle(document.documentElement).scrollPaddingTop || 0
+            );
+          window.scrollTo({ top: y, behavior: "smooth" });
+          history.replaceState(null, "", href);
         }, 350);
       }
     });
@@ -394,13 +403,13 @@ function fixAnchorScrollOffset() {
 
 // --- Scroll Position Persistence ---
 // Save scroll position before page unload
-window.addEventListener('beforeunload', function () {
-  sessionStorage.setItem('scrollPosition', window.scrollY);
+window.addEventListener("beforeunload", function () {
+  sessionStorage.setItem("scrollPosition", window.scrollY);
 });
 
 // Restore scroll position after DOM is loaded
-window.addEventListener('DOMContentLoaded', function () {
-  const scrollY = sessionStorage.getItem('scrollPosition');
+window.addEventListener("DOMContentLoaded", function () {
+  const scrollY = sessionStorage.getItem("scrollPosition");
   if (scrollY !== null) {
     window.scrollTo(0, parseInt(scrollY, 10));
     // Optionally clear the scroll position after restoring
@@ -420,13 +429,11 @@ function initNavbarHighlight() {
     "publications",
     "testimonials",
     "hobbies",
-    "contact"
+    "contact",
   ];
   const navLinks = {};
   sectionIds.forEach((id) => {
-    const link = document.querySelectorAll(
-      `a[href='#${id}']`
-    );
+    const link = document.querySelectorAll(`a[href='#${id}']`);
     navLinks[id] = link;
   });
 
@@ -444,9 +451,17 @@ function initNavbarHighlight() {
     sectionIds.forEach((id) => {
       navLinks[id].forEach((link) => {
         if (id === currentSection) {
-          link.classList.add("text-blue-600", "dark:text-blue-400", "font-bold");
+          link.classList.add(
+            "text-blue-600",
+            "dark:text-blue-400",
+            "font-bold"
+          );
         } else {
-          link.classList.remove("text-blue-600", "dark:text-blue-400", "font-bold");
+          link.classList.remove(
+            "text-blue-600",
+            "dark:text-blue-400",
+            "font-bold"
+          );
         }
       });
     });
