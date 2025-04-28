@@ -108,7 +108,7 @@ button[type="submit"] i {
     margin-top: 1rem;
   }
 
-  .grid {
+  .skills-grid {
     grid-template-columns: 1fr;
   }
 }
