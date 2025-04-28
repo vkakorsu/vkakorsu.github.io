@@ -64,14 +64,10 @@
         <div
           class="flex flex-col md:flex-row items-center justify-center w-full"
         >
-          <!-- Mobile Initials (left) -->
+          <!-- Mobile Navigation-->
           <div
-            class="flex w-full items-center justify-between md:hidden mb-2 md:mb-0"
+            class="flex w-full items-center justify-end md:hidden mb-2 md:mb-0"
           >
-            <span
-              class="text-3xl font-bold text-primary-700 pl-2 font-montserrat"
-              >VKA</span
-            >
             <button
               id="mobile-menu-button"
               class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
@@ -718,7 +714,7 @@
               <h4
                 class="text-md font-medium text-gray-900 dark:text-gray-100 mb-2"
               >
-                Honors and Awards
+                Honors & Awards
               </h4>
               <ul
                 class="list-disc list-inside text-gray-600 dark:text-gray-400"
@@ -774,7 +770,7 @@
               <h4
                 class="text-md font-medium text-gray-900 dark:text-gray-100 mb-2"
               >
-                Leadership and Activities
+                Leadership & Activities
               </h4>
               <ul
                 class="list-disc list-inside text-gray-600 dark:text-gray-400"
@@ -803,39 +799,39 @@
           Click any project to expand and see more details.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- AI-Powered Image Recognition System -->
+          <!-- FoodRescue Connect -->
           <div
             class="group relative bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-            onclick="openProjectModal('ai-image-recognition')"
+            onclick="openProjectModal('foodrescue-connect')"
           >
             <img
-              src="assets/images/project_images/ai-project.png"
-              alt="AI-Powered Image Recognition System"
+              src="assets/images/project_images/foodrescue.png"
+              alt="FoodRescue Connect"
               class="w-full h-48 object-cover"
             />
             <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">
-                AI-Powered Image Recognition System
-              </h3>
+              <h3 class="text-xl font-semibold mb-2">FoodRescue Connect</h3>
               <p class="text-gray-700 dark:text-gray-300 mb-4">
-                Developed a machine learning model for image classification
-                using advanced computer vision techniques.
+                Developed a web application to connect food providers with
+                recipients, manage food listings, and ensure food safety through
+                claim and expiry logic. Features robust user management,
+                including admin controls and suspension logic.
               </p>
               <div class="flex flex-wrap gap-2">
                 <span
                   class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm"
                 >
-                  Machine Learning
+                  Flask
                 </span>
                 <span
                   class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm"
                 >
-                  Computer Vision
+                  SQLAlchemy
                 </span>
                 <span
                   class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm"
                 >
-                  Image Recognition
+                  HTML/CSS/JS/Bootstrap
                 </span>
               </div>
             </div>

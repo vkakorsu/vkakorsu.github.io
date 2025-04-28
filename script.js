@@ -176,21 +176,23 @@ function initGoUpButton() {
 
 // Project modal functionality
 const projectDetails = {
-  "ai-image-recognition": {
-    title: "AI-Powered Image Recognition System",
+  "foodrescue-connect": {
+    title: "FoodRescue Connect",
     description:
-      "Developed a machine learning model for image classification using advanced computer vision techniques.",
-    technologies: ["Machine Learning", "Computer Vision", "Python"],
-    github: "https://github.com/vkakorsu/ai-image-recognition",
-    demo: "#",
+      "Developed a web application to connect food providers with recipients, manage food listings, and ensure food safety through claim and expiry logic. Features robust user management, including admin controls and suspension logic.",
+    technologies: ["Flask", "SQLAlchemy", "HTML/CSS/Boostrap/JS"],
+    github: "https://github.com/vkakorsu/foodrescue-connect",
+    demo: "https://foodrescue-connect.com",
     images: [
-      "assets/images/ai-image-recognition-1.jpg",
-      "assets/images/ai-image-recognition-2.jpg",
+      "assets/images/project_images/foodrescue_provider.png",
+      "assets/images/project_images/foodrescue_recipient.png",
     ],
     achievements: [
-      "Achieved 95% accuracy on test dataset",
-      "Implemented real-time image processing",
-      "Optimized model for edge devices",
+      "Implemented secure user authentication and admin controls",
+      "Automated food expiry and claim management for safety",
+      "Real-time dashboard for providers, recipients, and admins",
+      "User-friendly activity log with advanced filtering and search",
+      "Suspension logic to prevent access for suspended users",
     ],
   },
   "cloud-native-app": {
@@ -229,9 +231,10 @@ const projectDetails = {
   },
 };
 
-// Open project modal
-function openProjectModal(projectId) {
-  console.log("Opening modal for project:", projectId);
+// Enhance openProjectModal to stack images and enable lightbox
+function openProjectModal(projectKey) {
+  const details = projectDetails[projectKey];
+  console.log("Opening modal for project:", projectKey);
   const modal = document.getElementById("projectModal");
   const modalContent = modal.querySelector(".relative");
   const content = document.getElementById("modalContentInner");
@@ -242,9 +245,9 @@ function openProjectModal(projectId) {
   }
 
   // Get project details
-  const project = projectDetails[projectId];
+  const project = projectDetails[projectKey];
   if (!project) {
-    console.error("Project not found:", projectId);
+    console.error("Project not found:", projectKey);
     return;
   }
 
@@ -308,19 +311,26 @@ function openProjectModal(projectId) {
       </div>
       
       <!-- Project Images -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        ${project.images
-          .map(
-            (img, index) => `
-          <img src="${img}" alt="${project.title} - Image ${
-              index + 1
-            }" class="w-full rounded-lg shadow-lg transition-transform duration-200 hover:scale-105">
-        `
-          )
-          .join("")}
+      <div id="project-images" class="grid grid-cols-1 gap-4">
       </div>
     </div>
   `;
+
+  // Populate images stacked vertically
+  const imagesContainer = document.getElementById("project-images");
+  if (imagesContainer && details.images) {
+    imagesContainer.innerHTML = "";
+    details.images.forEach((src, idx) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = details.title + " screenshot " + (idx + 1);
+      img.className =
+        "w-full max-w-2xl rounded-lg cursor-pointer transition-transform hover:scale-105";
+      img.style.margin = "0 auto 1rem auto";
+      img.onclick = () => openImageLightbox(src);
+      imagesContainer.appendChild(img);
+    });
+  }
 
   // Add scale transform for smooth entrance
   modalContent.style.transform = "scale(0.95)";
@@ -335,6 +345,36 @@ function openProjectModal(projectId) {
     modalContent.style.transform = "scale(1)";
     modalContent.style.opacity = "1";
   }, 10);
+}
+
+// Simple lightbox implementation
+function openImageLightbox(src) {
+  // Create overlay
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = 0;
+  overlay.style.left = 0;
+  overlay.style.width = "100vw";
+  overlay.style.height = "100vh";
+  overlay.style.background = "rgba(0,0,0,0.8)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = 9999;
+
+  // Create image
+  const img = document.createElement("img");
+  img.src = src;
+  img.style.maxWidth = "90vw";
+  img.style.maxHeight = "90vh";
+  img.style.borderRadius = "8px";
+  img.style.boxShadow = "0 2px 16px rgba(0,0,0,0.5)";
+  overlay.appendChild(img);
+
+  // Close on click
+  overlay.onclick = () => document.body.removeChild(overlay);
+
+  document.body.appendChild(overlay);
 }
 
 // Close project modal
