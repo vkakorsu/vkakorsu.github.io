@@ -90,10 +90,14 @@ function initMobileMenu() {
   const hamburgerIcon = mobileMenuButton.querySelector(".hamburger-icon");
 
   function openMenu() {
-    mobileMenu.classList.add("active");
+    mobileMenu.classList.remove("hidden");
     mobileMenuBackdrop.classList.remove("hidden");
-    mobileMenuBackdrop.classList.add("active");
-    hamburgerIcon.classList.add("active");
+    // Small delay to allow display change before animation
+    requestAnimationFrame(() => {
+      mobileMenu.classList.add("active");
+      mobileMenuBackdrop.classList.add("active");
+      hamburgerIcon.classList.add("active");
+    });
     document.body.style.overflow = "hidden";
   }
 
@@ -102,9 +106,10 @@ function initMobileMenu() {
     mobileMenuBackdrop.classList.remove("active");
     hamburgerIcon.classList.remove("active");
     document.body.style.overflow = "";
-    // Hide backdrop after animation
+    // Hide after animation completes
     setTimeout(() => {
       if (!mobileMenu.classList.contains("active")) {
+        mobileMenu.classList.add("hidden");
         mobileMenuBackdrop.classList.add("hidden");
       }
     }, 300);
