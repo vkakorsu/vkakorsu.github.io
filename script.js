@@ -231,10 +231,9 @@ const projectDetails = {
   },
 };
 
-// Enhance openProjectModal to stack images and enable lightbox
+// Enhance openProjectModal with neobrutalist styling
 function openProjectModal(projectKey) {
   const details = projectDetails[projectKey];
-  console.log("Opening modal for project:", projectKey);
   const modal = document.getElementById("projectModal");
   const modalContent = modal.querySelector(".relative");
   const content = document.getElementById("modalContentInner");
@@ -244,155 +243,187 @@ function openProjectModal(projectKey) {
     return;
   }
 
-  // Get project details
   const project = projectDetails[projectKey];
   if (!project) {
     console.error("Project not found:", projectKey);
     return;
   }
 
-  console.log("Project details:", project);
+  // Color assignments for tech tags
+  const tagColors = ['neo-tag-blue', 'neo-tag-pink', 'neo-tag-green', 'neo-tag-orange', 'neo-tag-purple', ''];
 
-  // Generate modal content
+  // Generate neobrutalist modal content
   content.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Project Information -->
-      <div>
-        <h3 class="text-2xl font-semibold mb-4">${project.title}</h3>
-        <p class="text-gray-700 dark:text-gray-300 mb-6">${
-          project.description
-        }</p>
-        
-        <!-- Technologies -->
-        <div class="mb-6">
-          <h4 class="text-lg font-semibold mb-2">Technologies Used</h4>
-          <div class="flex flex-wrap gap-2">
-            ${project.technologies
-              .map(
-                (tech) => `
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">
-                ${tech}
-              </span>
-            `
-              )
-              .join("")}
+    <div class="space-y-6">
+      <!-- Header -->
+      <div class="border-b-4 border-black dark:border-[#FFFEF0] pb-4">
+        <h3 class="text-2xl md:text-3xl font-black uppercase mb-2">${project.title}</h3>
+        <p class="text-sm md:text-base">${project.description}</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left Column: Details -->
+        <div class="space-y-6">
+          <!-- Technologies -->
+          <div>
+            <h4 class="text-sm font-bold uppercase mb-3 inline-block border-b-2 border-[#FFE600]">Tech Stack</h4>
+            <div class="flex flex-wrap gap-2 mt-2">
+              ${project.technologies
+      .map((tech, i) => `
+                <span class="neo-tag ${tagColors[i % tagColors.length]} px-3 py-1">${tech}</span>
+              `)
+      .join("")}
+            </div>
+          </div>
+          
+          <!-- Links -->
+          <div class="flex flex-wrap gap-3">
+            <a href="${project.github}" target="_blank" 
+               class="neo-btn inline-flex items-center px-4 py-2 text-sm">
+              <i class="fab fa-github mr-2"></i>
+              <span>View Code</span>
+            </a>
+            ${project.demo !== "#" ? `
+              <a href="${project.demo}" target="_blank" 
+                 class="neo-btn neo-btn-green inline-flex items-center px-4 py-2 text-sm">
+                <i class="fas fa-external-link-alt mr-2"></i>
+                <span>Live Demo</span>
+              </a>
+            ` : ""}
+          </div>
+          
+          <!-- Achievements -->
+          <div>
+            <h4 class="text-sm font-bold uppercase mb-3 inline-block border-b-2 border-[#00D4FF]">Key Achievements</h4>
+            <ul class="list-none space-y-2 mt-2">
+              ${project.achievements
+      .map((achievement, i) => `
+                  <li class="flex items-start text-sm md:text-base">
+                    <span class="${tagColors[i % tagColors.length] || 'bg-[#FFE600]'} w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
+                    ${achievement}
+                  </li>
+                `)
+      .join("")}
+            </ul>
           </div>
         </div>
         
-        <!-- Links -->
-        <div class="flex flex-wrap gap-4 mb-6">
-          <a href="${
-            project.github
-          }" target="_blank" class="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 flex items-center space-x-2 transition-all duration-200">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
-          ${
-            project.demo !== "#"
-              ? `
-            <a href="${project.demo}" target="_blank" class="px-4 py-2 bg-green-600 dark:bg-green-500 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 flex items-center space-x-2 transition-all duration-200">
-              <i class="fas fa-external-link-alt"></i>
-              <span>Demo</span>
-            </a>
-          `
-              : ""
-          }
+        <!-- Right Column: Images -->
+        <div id="project-images" class="space-y-4">
         </div>
-        
-        <!-- Achievements -->
-        <div>
-          <h4 class="text-lg font-semibold mb-2">Key Achievements</h4>
-          <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
-            ${project.achievements
-              .map((achievement) => `<li>${achievement}</li>`)
-              .join("")}
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Project Images -->
-      <div id="project-images" class="grid grid-cols-1 gap-4">
       </div>
     </div>
   `;
 
-  // Populate images stacked vertically
+  // Populate images with neobrutalist styling
   const imagesContainer = document.getElementById("project-images");
-  if (imagesContainer && details.images) {
-    imagesContainer.innerHTML = "";
+  if (imagesContainer && details.images && details.images.length > 0) {
+    imagesContainer.innerHTML = `
+      <h4 class="text-sm font-bold uppercase mb-3 inline-block border-b-2 border-[#FF6B9D]">Screenshots</h4>
+    `;
     details.images.forEach((src, idx) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "border-4 border-black dark:border-[#FFFEF0] bg-white p-1 cursor-pointer transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[4px_4px_0px_0px_#000]";
+      wrapper.onclick = () => openImageLightbox(src);
+
       const img = document.createElement("img");
       img.src = src;
       img.alt = details.title + " screenshot " + (idx + 1);
-      img.className =
-        "w-full max-w-2xl rounded-lg cursor-pointer transition-transform hover:scale-105";
-      img.style.margin = "0 auto 1rem auto";
-      img.onclick = () => openImageLightbox(src);
-      imagesContainer.appendChild(img);
+      img.className = "w-full h-auto";
+      img.onerror = function () {
+        // Hide wrapper if image fails to load
+        wrapper.style.display = 'none';
+      };
+
+      wrapper.appendChild(img);
+      imagesContainer.appendChild(wrapper);
     });
   }
 
-  // Add scale transform for smooth entrance
-  modalContent.style.transform = "scale(0.95)";
+  // Animate modal entrance
+  modalContent.style.transform = "translateY(20px)";
   modalContent.style.opacity = "0";
+  modalContent.style.transition = "transform 0.2s ease, opacity 0.2s ease";
 
-  // Show modal
   modal.classList.remove("hidden");
   document.body.style.overflow = "hidden";
 
-  // Animate in
-  setTimeout(() => {
-    modalContent.style.transform = "scale(1)";
+  requestAnimationFrame(() => {
+    modalContent.style.transform = "translateY(0)";
     modalContent.style.opacity = "1";
-  }, 10);
+  });
 }
 
-// Simple lightbox implementation
+// Neobrutalist lightbox implementation
 function openImageLightbox(src) {
-  // Create overlay
   const overlay = document.createElement("div");
-  overlay.style.position = "fixed";
-  overlay.style.top = 0;
-  overlay.style.left = 0;
-  overlay.style.width = "100vw";
-  overlay.style.height = "100vh";
-  overlay.style.background = "rgba(0,0,0,0.8)";
-  overlay.style.display = "flex";
-  overlay.style.alignItems = "center";
-  overlay.style.justifyContent = "center";
-  overlay.style.zIndex = 9999;
+  overlay.className = "fixed inset-0 bg-black/90 flex items-center justify-center z-[9999] p-4";
+  overlay.style.animation = "fadeIn 0.2s ease";
 
-  // Create image
+  // Container for image and close button
+  const container = document.createElement("div");
+  container.className = "relative max-w-5xl w-full";
+
+  // Close button
+  const closeBtn = document.createElement("button");
+  closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+  closeBtn.className = "absolute -top-12 right-0 w-10 h-10 bg-[#FF6B9D] border-4 border-white text-black font-bold flex items-center justify-center cursor-pointer hover:bg-[#ff4477] transition-colors";
+  closeBtn.onclick = (e) => {
+    e.stopPropagation();
+    overlay.style.animation = "fadeOut 0.2s ease";
+    setTimeout(() => document.body.removeChild(overlay), 150);
+  };
+
+  // Image wrapper
+  const imgWrapper = document.createElement("div");
+  imgWrapper.className = "border-4 border-white bg-white p-2";
+
   const img = document.createElement("img");
   img.src = src;
-  img.style.maxWidth = "90vw";
-  img.style.maxHeight = "90vh";
-  img.style.borderRadius = "8px";
-  img.style.boxShadow = "0 2px 16px rgba(0,0,0,0.5)";
-  overlay.appendChild(img);
+  img.className = "w-full h-auto max-h-[80vh] object-contain";
+  img.alt = "Project screenshot";
 
-  // Close on click
-  overlay.onclick = () => document.body.removeChild(overlay);
+  imgWrapper.appendChild(img);
+  container.appendChild(closeBtn);
+  container.appendChild(imgWrapper);
+  overlay.appendChild(container);
+
+  // Close on overlay click
+  overlay.onclick = (e) => {
+    if (e.target === overlay) {
+      overlay.style.animation = "fadeOut 0.2s ease";
+      setTimeout(() => document.body.removeChild(overlay), 150);
+    }
+  };
+
+  // Close on ESC
+  const escHandler = (e) => {
+    if (e.key === "Escape") {
+      overlay.style.animation = "fadeOut 0.2s ease";
+      setTimeout(() => document.body.removeChild(overlay), 150);
+      document.removeEventListener("keydown", escHandler);
+    }
+  };
+  document.addEventListener("keydown", escHandler);
 
   document.body.appendChild(overlay);
 }
 
-// Close project modal
+// Close project modal with animation
 function closeProjectModal() {
   const modal = document.getElementById("projectModal");
   const modalContent = modal.querySelector(".relative");
 
-  // Animate out
-  modalContent.style.transform = "scale(0.95)";
+  modalContent.style.transform = "translateY(20px)";
   modalContent.style.opacity = "0";
 
-  // Remove modal after animation
   setTimeout(() => {
     modal.classList.add("hidden");
     document.body.style.overflow = "";
     modalContent.style.transform = "";
     modalContent.style.opacity = "";
-  }, 300);
+    modalContent.style.transition = "";
+  }, 200);
 }
 
 // Close modal when clicking outside
