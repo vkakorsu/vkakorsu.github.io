@@ -66,11 +66,15 @@
           <div
             class="flex w-full items-center justify-between md:hidden mb-2 md:mb-0"
           >
-            <div class="flex items-center gap-1">
-              <span class="bg-[#FFE600] border-2 border-black px-1.5 py-0.5 font-black text-sm">V</span>
-              <span class="bg-[#FF6B9D] border-2 border-black px-1.5 py-0.5 font-black text-sm">K</span>
-              <span class="bg-[#00D4FF] border-2 border-black px-1.5 py-0.5 font-black text-sm">A</span>
-            </div>
+            <button
+              id="darkModeToggleMobileNav"
+              class="neo-btn px-3 py-2 text-sm flex items-center gap-2"
+            >
+              <i class="fas fa-sun dark:hidden"></i>
+              <i class="fas fa-moon hidden dark:inline"></i>
+              <span class="font-bold uppercase dark:hidden">Light</span>
+              <span class="font-bold uppercase hidden dark:inline">Dark</span>
+            </button>
             <button
               id="mobile-menu-button"
               class="neo-btn p-2 w-12 h-12 flex items-center justify-center"

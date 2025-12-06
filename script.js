@@ -2,11 +2,15 @@
 function initDarkMode() {
   const darkModeToggle = document.getElementById("darkModeToggle");
   const darkModeToggleMobile = document.getElementById("darkModeToggleMobile");
+  const darkModeToggleMobileNav = document.getElementById("darkModeToggleMobileNav");
   const html = document.documentElement;
 
-  // Helper to update sun/moon icon visibility for both toggles
+  // All toggle buttons
+  const allToggles = [darkModeToggle, darkModeToggleMobile, darkModeToggleMobileNav];
+
+  // Helper to update sun/moon icon visibility for all toggles
   function updateIcons(isDark) {
-    [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
+    allToggles.forEach((toggle) => {
       if (!toggle) return;
       const sunIcon = toggle.querySelector(".fa-sun");
       const moonIcon = toggle.querySelector(".fa-moon");
@@ -17,12 +21,15 @@ function initDarkMode() {
     });
   }
 
-  // Helper to update toggle button UI for both toggles
+  // Helper to update toggle button UI for all toggles
   function updateToggleUI(isDark) {
-    [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
+    allToggles.forEach((toggle) => {
       if (!toggle) return;
       toggle.classList.toggle("dark-mode-on", isDark);
-      toggle.style.backgroundColor = isDark ? "#3b82f6" : "#f3f4f6";
+      // Only apply background style to desktop toggle
+      if (toggle === darkModeToggle) {
+        toggle.style.backgroundColor = isDark ? "#3b82f6" : "#f3f4f6";
+      }
       const toggleThumb = toggle.querySelector(".toggle-thumb");
       if (toggleThumb) {
         toggleThumb.style.transform = isDark
@@ -47,8 +54,8 @@ function initDarkMode() {
   }
   updateToggleUI(isDark);
 
-  // Add event listeners to both toggles
-  [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
+  // Add event listeners to all toggles
+  allToggles.forEach((toggle) => {
     if (!toggle) return;
     toggle.addEventListener("click", () => {
       const isDarkNow = html.classList.contains("dark");
