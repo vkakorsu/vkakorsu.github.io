@@ -85,42 +85,59 @@ function initTaglineAnimation() {
 function initMobileMenu() {
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenuBackdrop = document.getElementById("mobile-menu-backdrop");
+  const mobileMenuClose = document.getElementById("mobile-menu-close");
+  const hamburgerIcon = mobileMenuButton.querySelector(".hamburger-icon");
 
+  function openMenu() {
+    mobileMenu.classList.add("active");
+    mobileMenuBackdrop.classList.remove("hidden");
+    mobileMenuBackdrop.classList.add("active");
+    hamburgerIcon.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove("active");
+    mobileMenuBackdrop.classList.remove("active");
+    hamburgerIcon.classList.remove("active");
+    document.body.style.overflow = "";
+    // Hide backdrop after animation
+    setTimeout(() => {
+      if (!mobileMenu.classList.contains("active")) {
+        mobileMenuBackdrop.classList.add("hidden");
+      }
+    }, 300);
+  }
+
+  // Toggle menu on hamburger click
   mobileMenuButton.addEventListener("click", () => {
-    const isMenuOpen = !mobileMenu.classList.contains("hidden");
-    mobileMenu.classList.toggle("hidden");
-    // Animate the menu icon
-    const menuIcon = mobileMenuButton.querySelector("i");
-    if (isMenuOpen) {
-      menuIcon.classList.remove("fa-times");
-      menuIcon.classList.add("fa-bars");
+    if (mobileMenu.classList.contains("active")) {
+      closeMenu();
     } else {
-      menuIcon.classList.remove("fa-bars");
-      menuIcon.classList.add("fa-times");
+      openMenu();
     }
   });
 
-  // Handle X button inside mobile menu
-  const closeMenuBtn = mobileMenu.querySelector("[aria-label='Close menu']");
-  if (closeMenuBtn) {
-    closeMenuBtn.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-      const menuIcon = mobileMenuButton.querySelector("i");
-      menuIcon.classList.remove("fa-times");
-      menuIcon.classList.add("fa-bars");
-    });
+  // Close on X button
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener("click", closeMenu);
   }
 
-  // Close mobile menu when clicking a link
+  // Close on backdrop click
+  mobileMenuBackdrop.addEventListener("click", closeMenu);
+
+  // Close on link click
   const mobileMenuLinks = mobileMenu.querySelectorAll("a");
   mobileMenuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-      // Reset menu icon
-      const menuIcon = mobileMenuButton.querySelector("i");
-      menuIcon.classList.remove("fa-times");
-      menuIcon.classList.add("fa-bars");
-    });
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Close on ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+      closeMenu();
+    }
   });
 }
 

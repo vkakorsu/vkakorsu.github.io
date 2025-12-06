@@ -62,16 +62,21 @@
         <div
           class="flex flex-col md:flex-row items-center justify-center w-full"
         >
-          <!-- Mobile Navigation-->
+          <!-- Mobile Navigation Toggle -->
           <div
-            class="flex w-full items-center justify-end md:hidden mb-2 md:mb-0"
+            class="flex w-full items-center justify-between md:hidden mb-2 md:mb-0"
           >
+            <span class="font-black text-lg uppercase tracking-tight">VKA</span>
             <button
               id="mobile-menu-button"
-              class="neo-btn p-2"
+              class="neo-btn p-2 w-12 h-12 flex items-center justify-center"
               aria-label="Toggle menu"
             >
-              <i class="fas fa-bars text-2xl"></i>
+              <div class="hamburger-icon">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+              </div>
             </button>
           </div>
 
@@ -112,62 +117,107 @@
           </div>
         </div>
 
-        <!-- Mobile Navigation -->
+        <!-- Mobile Menu Backdrop -->
         <div
-          id="mobile-menu"
-          class="hidden md:hidden mt-4 neo-section"
-          style="
-            right: 0;
-            left: auto;
-            position: fixed;
-            top: 0;
-            height: 100vh;
-            width: 80vw;
-            max-width: 320px;
-            z-index: 50;
-          "
-        >
-          <div class="flex flex-col space-y-3 p-4">
-            <button
-              onclick="document.getElementById('mobile-menu').classList.add('hidden');"
-              class="self-end mb-4 neo-btn neo-btn-pink p-2"
-              aria-label="Close menu"
+          id="mobile-menu-backdrop"
+          class="mobile-menu-backdrop hidden"
+        ></div>
+
+        <!-- Mobile Navigation Panel -->
+        <div id="mobile-menu" class="mobile-menu-panel">
+          <div class="flex flex-col h-full">
+            <!-- Header -->
+            <div
+              class="flex items-center justify-between p-4 border-b-4 border-black dark:border-[#FFFEF0]"
             >
-              <i class="fas fa-times text-xl"></i>
-            </button>
-            <a href="#about" class="neo-nav-link">About</a>
-            <a href="#skills" class="neo-nav-link">Skills</a>
-            <a href="#experience" class="neo-nav-link">Experience</a>
-            <a href="#education" class="neo-nav-link">Education</a>
-            <a href="#projects" class="neo-nav-link">Projects</a>
-            <a href="#achievements" class="neo-nav-link">Achievements</a>
-            <a href="#testimonials" class="neo-nav-link">Testimonials</a>
-            <a href="#hobbies" class="neo-nav-link">Hobbies</a>
-            <a
-              href="https://hashnode.com/@vkakorsu"
-              target="_blank"
-              rel="noopener"
-              class="neo-nav-link"
-              >Blog</a
-            >
-            <a href="#contact" class="neo-nav-link">Contact</a>
-            <div class="pt-4 border-t-4 border-black dark:border-[#FFFEF0]">
+              <span class="font-black text-xl uppercase">Menu</span>
               <button
-                id="darkModeToggleMobile"
-                class="relative inline-flex items-center h-6 w-11 focus:outline-none"
+                id="mobile-menu-close"
+                class="neo-btn neo-btn-pink w-10 h-10 flex items-center justify-center"
+                aria-label="Close menu"
               >
-                <span class="sr-only">Toggle dark mode</span>
-                <span
-                  class="inline-block w-4 h-4 transform transition-all duration-300 bg-[#FFE600] dark:bg-[#FF6B9D] toggle-thumb"
-                >
-                  <i
-                    class="fas fa-sun text-black text-xs absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  ></i>
-                  <i
-                    class="fas fa-moon text-black text-xs absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  ></i>
-                </span>
+                <i class="fas fa-times text-lg"></i>
               </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="flex-1 overflow-y-auto p-4">
+              <div class="space-y-2">
+                <a href="#about" class="mobile-nav-link">
+                  <i class="fas fa-user w-6"></i> About
+                </a>
+                <a href="#skills" class="mobile-nav-link">
+                  <i class="fas fa-code w-6"></i> Skills
+                </a>
+                <a href="#experience" class="mobile-nav-link">
+                  <i class="fas fa-briefcase w-6"></i> Experience
+                </a>
+                <a href="#education" class="mobile-nav-link">
+                  <i class="fas fa-graduation-cap w-6"></i> Education
+                </a>
+                <a href="#projects" class="mobile-nav-link">
+                  <i class="fas fa-folder-open w-6"></i> Projects
+                </a>
+                <a href="#achievements" class="mobile-nav-link">
+                  <i class="fas fa-trophy w-6"></i> Achievements
+                </a>
+                <a href="#testimonials" class="mobile-nav-link">
+                  <i class="fas fa-quote-left w-6"></i> Testimonials
+                </a>
+                <a href="#hobbies" class="mobile-nav-link">
+                  <i class="fas fa-heart w-6"></i> Hobbies
+                </a>
+                <a
+                  href="https://hashnode.com/@vkakorsu"
+                  target="_blank"
+                  rel="noopener"
+                  class="mobile-nav-link"
+                >
+                  <i class="fas fa-blog w-6"></i> Blog
+                  <i class="fas fa-external-link-alt text-xs ml-auto"></i>
+                </a>
+                <a href="#contact" class="mobile-nav-link">
+                  <i class="fas fa-envelope w-6"></i> Contact
+                </a>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="p-4 border-t-4 border-black dark:border-[#FFFEF0]">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold uppercase">Theme</span>
+                <button
+                  id="darkModeToggleMobile"
+                  class="neo-btn px-4 py-2 text-sm flex items-center gap-2"
+                >
+                  <i class="fas fa-sun dark:hidden"></i>
+                  <i class="fas fa-moon hidden dark:inline"></i>
+                  <span class="dark:hidden">Light</span>
+                  <span class="hidden dark:inline">Dark</span>
+                </button>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <a
+                  href="https://github.com/vkakorsu"
+                  target="_blank"
+                  class="neo-btn neo-btn-blue w-10 h-10 flex items-center justify-center"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="https://linkedin.com/in/vkakorsu"
+                  target="_blank"
+                  class="neo-btn neo-btn-blue w-10 h-10 flex items-center justify-center"
+                >
+                  <i class="fab fa-linkedin"></i>
+                </a>
+                <a
+                  href="mailto:vincentakorsu@gmail.com"
+                  class="neo-btn neo-btn-pink w-10 h-10 flex items-center justify-center"
+                >
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -429,26 +479,38 @@
         class="neo-section p-4 md:p-8 mb-4 md:mb-8"
         data-aos="fade"
       >
-        <h2 class="neo-heading text-2xl md:text-3xl mb-6 md:mb-8">Professional Experience</h2>
-        
+        <h2 class="neo-heading text-2xl md:text-3xl mb-6 md:mb-8">
+          Professional Experience
+        </h2>
+
         <!-- Timeline -->
         <div class="relative mt-6 md:mt-8">
           <!-- Timeline line -->
-          <div class="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-black dark:bg-[#FFFEF0]"></div>
-          
+          <div
+            class="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-black dark:bg-[#FFFEF0]"
+          ></div>
+
           <div class="space-y-6 md:space-y-8">
             <!-- Bethniel FinTech -->
             <div class="relative md:pl-20">
               <!-- Timeline dot -->
-              <div class="hidden md:flex absolute left-5 top-6 w-7 h-7 bg-[#00D4FF] border-4 border-black dark:border-[#FFFEF0] items-center justify-center z-10">
+              <div
+                class="hidden md:flex absolute left-5 top-6 w-7 h-7 bg-[#00D4FF] border-4 border-black dark:border-[#FFFEF0] items-center justify-center z-10"
+              >
                 <div class="w-2 h-2 bg-black"></div>
               </div>
-              
-              <div class="neo-card p-4 md:p-6 border-l-8 border-l-[#00D4FF] md:border-l-4">
+
+              <div
+                class="neo-card p-4 md:p-6 border-l-8 border-l-[#00D4FF] md:border-l-4"
+              >
                 <!-- Header -->
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+                <div
+                  class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4"
+                >
                   <div class="flex items-center">
-                    <div class="w-12 h-12 md:w-14 md:h-14 bg-white border-4 border-black dark:border-[#FFFEF0] p-1 mr-4 flex-shrink-0">
+                    <div
+                      class="w-12 h-12 md:w-14 md:h-14 bg-white border-4 border-black dark:border-[#FFFEF0] p-1 mr-4 flex-shrink-0"
+                    >
                       <img
                         src="assets/images/bethniel-fintech.png"
                         alt="Bethniel Financial Technology Logo"
@@ -456,14 +518,22 @@
                       />
                     </div>
                     <div>
-                      <h3 class="text-lg md:text-xl font-black uppercase">Software Dev Intern</h3>
-                      <p class="text-sm md:text-base font-medium">Bethniel Financial Technology</p>
-                      <p class="text-xs text-gray-600 dark:text-gray-400">Accra, Ghana</p>
+                      <h3 class="text-lg md:text-xl font-black uppercase">
+                        Software Dev Intern
+                      </h3>
+                      <p class="text-sm md:text-base font-medium">
+                        Bethniel Financial Technology
+                      </p>
+                      <p class="text-xs text-gray-600 dark:text-gray-400">
+                        Accra, Ghana
+                      </p>
                     </div>
                   </div>
                   <div class="flex items-center gap-2">
                     <span class="neo-badge bg-[#00FF94] px-3 py-1 text-xs">
-                      <i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i>
+                      <i
+                        class="fas fa-circle text-[6px] mr-1 animate-pulse"
+                      ></i>
                       CURRENT
                     </span>
                     <span class="neo-badge px-3 py-1 text-xs">
@@ -471,32 +541,61 @@
                     </span>
                   </div>
                 </div>
-                
+
                 <!-- Tech Stack -->
                 <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs">Java</span>
-                  <span class="neo-tag neo-tag-green px-2 py-0.5 text-xs">Python</span>
-                  <span class="neo-tag neo-tag-orange px-2 py-0.5 text-xs">AI/ML</span>
-                  <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs">FinTech</span>
+                  <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs"
+                    >Java</span
+                  >
+                  <span class="neo-tag neo-tag-green px-2 py-0.5 text-xs"
+                    >Python</span
+                  >
+                  <span class="neo-tag neo-tag-orange px-2 py-0.5 text-xs"
+                    >AI/ML</span
+                  >
+                  <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs"
+                    >FinTech</span
+                  >
                 </div>
-                
+
                 <!-- Achievements -->
                 <ul class="list-none space-y-2 text-sm md:text-base">
                   <li class="flex items-start">
-                    <span class="bg-[#00D4FF] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
-                    <span>Developing core features in <strong>Java</strong> for AI-powered personal finance application</span>
+                    <span
+                      class="bg-[#00D4FF] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"
+                    ></span>
+                    <span
+                      >Developing core features in <strong>Java</strong> for
+                      AI-powered personal finance application</span
+                    >
                   </li>
                   <li class="flex items-start">
-                    <span class="bg-[#00D4FF] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
-                    <span>Implemented financial algorithms including <strong>e-levy tax calculations</strong> for mobile money</span>
+                    <span
+                      class="bg-[#00D4FF] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"
+                    ></span>
+                    <span
+                      >Implemented financial algorithms including
+                      <strong>e-levy tax calculations</strong> for mobile
+                      money</span
+                    >
                   </li>
                   <li class="flex items-start">
-                    <span class="bg-[#00D4FF] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
-                    <span>Built <strong>automation tools</strong> with Python to streamline internal workflows</span>
+                    <span
+                      class="bg-[#00D4FF] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"
+                    ></span>
+                    <span
+                      >Built <strong>automation tools</strong> with Python to
+                      streamline internal workflows</span
+                    >
                   </li>
                   <li class="flex items-start">
-                    <span class="bg-[#00D4FF] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
-                    <span>Collaborate with customer support to resolve technical issues</span>
+                    <span
+                      class="bg-[#00D4FF] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"
+                    ></span>
+                    <span
+                      >Collaborate with customer support to resolve technical
+                      issues</span
+                    >
                   </li>
                 </ul>
               </div>
@@ -505,15 +604,23 @@
             <!-- Koliko Wear -->
             <div class="relative md:pl-20">
               <!-- Timeline dot -->
-              <div class="hidden md:flex absolute left-5 top-6 w-7 h-7 bg-[#FF6B9D] border-4 border-black dark:border-[#FFFEF0] items-center justify-center z-10">
+              <div
+                class="hidden md:flex absolute left-5 top-6 w-7 h-7 bg-[#FF6B9D] border-4 border-black dark:border-[#FFFEF0] items-center justify-center z-10"
+              >
                 <div class="w-2 h-2 bg-black"></div>
               </div>
-              
-              <div class="neo-card p-4 md:p-6 border-l-8 border-l-[#FF6B9D] md:border-l-4">
+
+              <div
+                class="neo-card p-4 md:p-6 border-l-8 border-l-[#FF6B9D] md:border-l-4"
+              >
                 <!-- Header -->
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+                <div
+                  class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4"
+                >
                   <div class="flex items-center">
-                    <div class="w-12 h-12 md:w-14 md:h-14 bg-white border-4 border-black dark:border-[#FFFEF0] p-1 mr-4 flex-shrink-0">
+                    <div
+                      class="w-12 h-12 md:w-14 md:h-14 bg-white border-4 border-black dark:border-[#FFFEF0] p-1 mr-4 flex-shrink-0"
+                    >
                       <img
                         src="assets/images/koliko-wear.png"
                         alt="Koliko Wear Logo"
@@ -521,41 +628,77 @@
                       />
                     </div>
                     <div>
-                      <h3 class="text-lg md:text-xl font-black uppercase">Web Dev Intern</h3>
-                      <p class="text-sm md:text-base font-medium">Koliko Wear</p>
-                      <p class="text-xs text-gray-600 dark:text-gray-400">Remote</p>
+                      <h3 class="text-lg md:text-xl font-black uppercase">
+                        Web Dev Intern
+                      </h3>
+                      <p class="text-sm md:text-base font-medium">
+                        Koliko Wear
+                      </p>
+                      <p class="text-xs text-gray-600 dark:text-gray-400">
+                        Remote
+                      </p>
                     </div>
                   </div>
-                  <span class="neo-badge px-3 py-1 text-xs self-start md:self-center">
+                  <span
+                    class="neo-badge px-3 py-1 text-xs self-start md:self-center"
+                  >
                     Aug - Dec 2022
                   </span>
                 </div>
-                
+
                 <!-- Tech Stack -->
                 <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="neo-tag neo-tag-pink px-2 py-0.5 text-xs">Angular</span>
-                  <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs">Node.js</span>
-                  <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs">MySQL</span>
+                  <span class="neo-tag neo-tag-pink px-2 py-0.5 text-xs"
+                    >Angular</span
+                  >
+                  <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs"
+                    >Node.js</span
+                  >
+                  <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs"
+                    >MySQL</span
+                  >
                   <span class="neo-tag px-2 py-0.5 text-xs">JavaScript</span>
                 </div>
-                
+
                 <!-- Achievements -->
                 <ul class="list-none space-y-2 text-sm md:text-base">
                   <li class="flex items-start">
-                    <span class="bg-[#FF6B9D] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
-                    <span>Migrated legacy JavaScript app to <strong>Angular.js</strong>, improving UX and reducing code complexity</span>
+                    <span
+                      class="bg-[#FF6B9D] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"
+                    ></span>
+                    <span
+                      >Migrated legacy JavaScript app to
+                      <strong>Angular.js</strong>, improving UX and reducing
+                      code complexity</span
+                    >
                   </li>
                   <li class="flex items-start">
-                    <span class="bg-[#FF6B9D] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
-                    <span>Developed and optimized <strong>full-stack features</strong> using Node.js backend</span>
+                    <span
+                      class="bg-[#FF6B9D] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"
+                    ></span>
+                    <span
+                      >Developed and optimized
+                      <strong>full-stack features</strong> using Node.js
+                      backend</span
+                    >
                   </li>
                   <li class="flex items-start">
-                    <span class="bg-[#FF6B9D] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
-                    <span>Designed comprehensive <strong>test suites</strong> and performed debugging</span>
+                    <span
+                      class="bg-[#FF6B9D] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"
+                    ></span>
+                    <span
+                      >Designed comprehensive <strong>test suites</strong> and
+                      performed debugging</span
+                    >
                   </li>
                   <li class="flex items-start">
-                    <span class="bg-[#FF6B9D] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"></span>
-                    <span>Optimized <strong>MySQL database</strong> for user data, transactions, and delivery tracking</span>
+                    <span
+                      class="bg-[#FF6B9D] w-2 h-2 mt-2 mr-3 flex-shrink-0 border border-black"
+                    ></span>
+                    <span
+                      >Optimized <strong>MySQL database</strong> for user data,
+                      transactions, and delivery tracking</span
+                    >
                   </li>
                 </ul>
               </div>
@@ -571,48 +714,78 @@
         data-aos="fade"
       >
         <h2 class="neo-heading text-2xl md:text-3xl mb-6 md:mb-8">Education</h2>
-        
+
         <!-- Timeline -->
         <div class="relative mt-6 md:mt-8">
           <!-- Timeline line -->
-          <div class="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-black dark:bg-[#FFFEF0]"></div>
-          
+          <div
+            class="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-black dark:bg-[#FFFEF0]"
+          ></div>
+
           <div class="space-y-6 md:space-y-8">
             <!-- Loyola University -->
             <div class="relative md:pl-20">
               <!-- Timeline dot -->
-              <div class="hidden md:flex absolute left-5 top-6 w-7 h-7 bg-[#00D4FF] border-4 border-black dark:border-[#FFFEF0] items-center justify-center z-10">
+              <div
+                class="hidden md:flex absolute left-5 top-6 w-7 h-7 bg-[#00D4FF] border-4 border-black dark:border-[#FFFEF0] items-center justify-center z-10"
+              >
                 <i class="fas fa-graduation-cap text-xs text-black"></i>
               </div>
-              
-              <div class="neo-card p-4 md:p-6 border-l-8 border-l-[#00D4FF] md:border-l-4">
+
+              <div
+                class="neo-card p-4 md:p-6 border-l-8 border-l-[#00D4FF] md:border-l-4"
+              >
                 <!-- Header -->
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+                <div
+                  class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4"
+                >
                   <div class="flex items-center">
-                    <div class="w-14 h-14 md:w-16 md:h-16 bg-white border-4 border-black dark:border-[#FFFEF0] p-1 mr-4 flex-shrink-0">
-                      <img src="assets/images/loyola-logo.png" alt="Loyola University Logo" class="w-full h-full object-contain"/>
+                    <div
+                      class="w-14 h-14 md:w-16 md:h-16 bg-white border-4 border-black dark:border-[#FFFEF0] p-1 mr-4 flex-shrink-0"
+                    >
+                      <img
+                        src="assets/images/loyola-logo.png"
+                        alt="Loyola University Logo"
+                        class="w-full h-full object-contain"
+                      />
                     </div>
                     <div>
-                      <h3 class="text-lg md:text-xl font-black uppercase">B.S. Computer Science</h3>
-                      <p class="text-sm md:text-base font-medium">Loyola University New Orleans</p>
-                      <p class="text-xs text-gray-600 dark:text-gray-400">New Orleans, Louisiana, USA</p>
+                      <h3 class="text-lg md:text-xl font-black uppercase">
+                        B.S. Computer Science
+                      </h3>
+                      <p class="text-sm md:text-base font-medium">
+                        Loyola University New Orleans
+                      </p>
+                      <p class="text-xs text-gray-600 dark:text-gray-400">
+                        New Orleans, Louisiana, USA
+                      </p>
                     </div>
                   </div>
                   <div class="flex flex-wrap items-center gap-2">
                     <span class="neo-badge bg-[#00FF94] px-3 py-1 text-xs">
-                      <i class="fas fa-circle text-[6px] mr-1 animate-pulse"></i>
+                      <i
+                        class="fas fa-circle text-[6px] mr-1 animate-pulse"
+                      ></i>
                       CURRENT
                     </span>
-                    <span class="neo-badge px-3 py-1 text-xs">Aug 2025 - May 2029</span>
+                    <span class="neo-badge px-3 py-1 text-xs"
+                      >Aug 2025 - May 2029</span
+                    >
                   </div>
                 </div>
 
                 <!-- Minors -->
                 <div class="mb-4">
                   <span class="text-xs font-bold uppercase mr-2">Minors:</span>
-                  <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs">Entrepreneurship</span>
-                  <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs">Finance</span>
-                  <span class="neo-tag neo-tag-pink px-2 py-0.5 text-xs">Sociology</span>
+                  <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs"
+                    >Entrepreneurship</span
+                  >
+                  <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs"
+                    >Finance</span
+                  >
+                  <span class="neo-tag neo-tag-pink px-2 py-0.5 text-xs"
+                    >Sociology</span
+                  >
                 </div>
 
                 <!-- Two Column Layout for Details -->
@@ -621,24 +794,35 @@
                   <div>
                     <!-- Honors -->
                     <div class="mb-4">
-                      <h4 class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#FFE600]">
-                        <i class="fas fa-trophy mr-1 text-[#FFE600]"></i> Honors & Scholarships
+                      <h4
+                        class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#FFE600]"
+                      >
+                        <i class="fas fa-trophy mr-1 text-[#FFE600]"></i> Honors
+                        & Scholarships
                       </h4>
                       <ul class="list-none space-y-1 text-sm mt-2">
                         <li class="flex items-start">
-                          <span class="bg-[#FFE600] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#FFE600] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           <strong>Full-Ride Ignatian Scholarship</strong>
                         </li>
                         <li class="flex items-start">
-                          <span class="bg-[#FFE600] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#FFE600] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           CS Merit Scholarship
                         </li>
                         <li class="flex items-start">
-                          <span class="bg-[#FFE600] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#FFE600] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           Dean's List
                         </li>
                         <li class="flex items-start">
-                          <span class="bg-[#FFE600] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#FFE600] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           University Honors Program
                         </li>
                       </ul>
@@ -646,20 +830,29 @@
 
                     <!-- Campus Involvement -->
                     <div>
-                      <h4 class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#00D4FF]">
-                        <i class="fas fa-users mr-1 text-[#00D4FF]"></i> Campus Involvement
+                      <h4
+                        class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#00D4FF]"
+                      >
+                        <i class="fas fa-users mr-1 text-[#00D4FF]"></i> Campus
+                        Involvement
                       </h4>
                       <ul class="list-none space-y-1 text-sm mt-2">
                         <li class="flex items-start">
-                          <span class="bg-[#00D4FF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#00D4FF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           <strong>VP, Computer Science Club</strong>
                         </li>
                         <li class="flex items-start">
-                          <span class="bg-[#00D4FF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#00D4FF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           Social Justice Scholars Program
                         </li>
                         <li class="flex items-start">
-                          <span class="bg-[#00D4FF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#00D4FF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           Tech Outreach Organizer
                         </li>
                       </ul>
@@ -668,19 +861,38 @@
 
                   <!-- Right Column -->
                   <div>
-                    <h4 class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#C77DFF]">
-                      <i class="fas fa-book mr-1 text-[#C77DFF]"></i> Key Coursework
+                    <h4
+                      class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#C77DFF]"
+                    >
+                      <i class="fas fa-book mr-1 text-[#C77DFF]"></i> Key
+                      Coursework
                     </h4>
                     <div class="flex flex-wrap gap-1.5 mt-2">
-                      <span class="neo-tag px-2 py-0.5 text-xs">Data Structures</span>
-                      <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs">Algorithms</span>
-                      <span class="neo-tag neo-tag-pink px-2 py-0.5 text-xs">OS</span>
-                      <span class="neo-tag neo-tag-green px-2 py-0.5 text-xs">Databases</span>
-                      <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs">Networks</span>
-                      <span class="neo-tag neo-tag-orange px-2 py-0.5 text-xs">AI</span>
+                      <span class="neo-tag px-2 py-0.5 text-xs"
+                        >Data Structures</span
+                      >
+                      <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs"
+                        >Algorithms</span
+                      >
+                      <span class="neo-tag neo-tag-pink px-2 py-0.5 text-xs"
+                        >OS</span
+                      >
+                      <span class="neo-tag neo-tag-green px-2 py-0.5 text-xs"
+                        >Databases</span
+                      >
+                      <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs"
+                        >Networks</span
+                      >
+                      <span class="neo-tag neo-tag-orange px-2 py-0.5 text-xs"
+                        >AI</span
+                      >
                       <span class="neo-tag px-2 py-0.5 text-xs">Cloud</span>
-                      <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs">ML</span>
-                      <span class="neo-tag neo-tag-pink px-2 py-0.5 text-xs">Software Eng</span>
+                      <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs"
+                        >ML</span
+                      >
+                      <span class="neo-tag neo-tag-pink px-2 py-0.5 text-xs"
+                        >Software Eng</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -690,24 +902,45 @@
             <!-- Mawuli School -->
             <div class="relative md:pl-20">
               <!-- Timeline dot -->
-              <div class="hidden md:flex absolute left-5 top-6 w-7 h-7 bg-[#FF6B9D] border-4 border-black dark:border-[#FFFEF0] items-center justify-center z-10">
+              <div
+                class="hidden md:flex absolute left-5 top-6 w-7 h-7 bg-[#FF6B9D] border-4 border-black dark:border-[#FFFEF0] items-center justify-center z-10"
+              >
                 <i class="fas fa-school text-xs text-black"></i>
               </div>
-              
-              <div class="neo-card p-4 md:p-6 border-l-8 border-l-[#FF6B9D] md:border-l-4">
+
+              <div
+                class="neo-card p-4 md:p-6 border-l-8 border-l-[#FF6B9D] md:border-l-4"
+              >
                 <!-- Header -->
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+                <div
+                  class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4"
+                >
                   <div class="flex items-center">
-                    <div class="w-14 h-14 md:w-16 md:h-16 bg-white border-4 border-black dark:border-[#FFFEF0] p-1 mr-4 flex-shrink-0">
-                      <img src="assets/images/mawuli-logo.png" alt="Mawuli School Logo" class="w-full h-full object-contain"/>
+                    <div
+                      class="w-14 h-14 md:w-16 md:h-16 bg-white border-4 border-black dark:border-[#FFFEF0] p-1 mr-4 flex-shrink-0"
+                    >
+                      <img
+                        src="assets/images/mawuli-logo.png"
+                        alt="Mawuli School Logo"
+                        class="w-full h-full object-contain"
+                      />
                     </div>
                     <div>
-                      <h3 class="text-lg md:text-xl font-black uppercase">General Science</h3>
-                      <p class="text-sm md:text-base font-medium">Mawuli School</p>
-                      <p class="text-xs text-gray-600 dark:text-gray-400">Ho, Volta Region, Ghana</p>
+                      <h3 class="text-lg md:text-xl font-black uppercase">
+                        General Science
+                      </h3>
+                      <p class="text-sm md:text-base font-medium">
+                        Mawuli School
+                      </p>
+                      <p class="text-xs text-gray-600 dark:text-gray-400">
+                        Ho, Volta Region, Ghana
+                      </p>
                     </div>
                   </div>
-                  <span class="neo-badge px-3 py-1 text-xs self-start md:self-center">Sep 2019 - Sep 2022</span>
+                  <span
+                    class="neo-badge px-3 py-1 text-xs self-start md:self-center"
+                    >Sep 2019 - Sep 2022</span
+                  >
                 </div>
 
                 <!-- Two Column Layout -->
@@ -716,24 +949,35 @@
                   <div>
                     <!-- Honors -->
                     <div class="mb-4">
-                      <h4 class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#FFE600]">
-                        <i class="fas fa-award mr-1 text-[#FFE600]"></i> Honors & Awards
+                      <h4
+                        class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#FFE600]"
+                      >
+                        <i class="fas fa-award mr-1 text-[#FFE600]"></i> Honors
+                        & Awards
                       </h4>
                       <ul class="list-none space-y-1 text-sm mt-2">
                         <li class="flex items-start">
-                          <span class="bg-[#FF6B9D] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#FF6B9D] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           <strong>Graduated with Distinction</strong> (WASSCE)
                         </li>
                         <li class="flex items-start">
-                          <span class="bg-[#FF6B9D] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#FF6B9D] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           Top 10% of Class
                         </li>
                         <li class="flex items-start">
-                          <span class="bg-[#FF6B9D] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#FF6B9D] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           Science Excellence Award
                         </li>
                         <li class="flex items-start">
-                          <span class="bg-[#FF6B9D] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                          <span
+                            class="bg-[#FF6B9D] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                          ></span>
                           Regional Science Fair Winner
                         </li>
                       </ul>
@@ -741,38 +985,57 @@
 
                     <!-- Key Subjects -->
                     <div>
-                      <h4 class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#00FF94]">
-                        <i class="fas fa-flask mr-1 text-[#00FF94]"></i> Key Subjects
+                      <h4
+                        class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#00FF94]"
+                      >
+                        <i class="fas fa-flask mr-1 text-[#00FF94]"></i> Key
+                        Subjects
                       </h4>
                       <div class="flex flex-wrap gap-1.5 mt-2">
                         <span class="neo-tag px-2 py-0.5 text-xs">Math</span>
-                        <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs">Physics</span>
-                        <span class="neo-tag neo-tag-green px-2 py-0.5 text-xs">Biology</span>
-                        <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs">Chemistry</span>
+                        <span class="neo-tag neo-tag-blue px-2 py-0.5 text-xs"
+                          >Physics</span
+                        >
+                        <span class="neo-tag neo-tag-green px-2 py-0.5 text-xs"
+                          >Biology</span
+                        >
+                        <span class="neo-tag neo-tag-purple px-2 py-0.5 text-xs"
+                          >Chemistry</span
+                        >
                       </div>
                     </div>
                   </div>
 
                   <!-- Right Column -->
                   <div>
-                    <h4 class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#C77DFF]">
+                    <h4
+                      class="text-sm font-bold uppercase mb-2 inline-block border-b-2 border-[#C77DFF]"
+                    >
                       <i class="fas fa-star mr-1 text-[#C77DFF]"></i> Leadership
                     </h4>
                     <ul class="list-none space-y-1 text-sm mt-2">
                       <li class="flex items-start">
-                        <span class="bg-[#C77DFF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                        <span
+                          class="bg-[#C77DFF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                        ></span>
                         <strong>Head Prefect</strong> (2022)
                       </li>
                       <li class="flex items-start">
-                        <span class="bg-[#C77DFF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                        <span
+                          class="bg-[#C77DFF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                        ></span>
                         President, Science Club
                       </li>
                       <li class="flex items-start">
-                        <span class="bg-[#C77DFF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                        <span
+                          class="bg-[#C77DFF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                        ></span>
                         President, Marching Band
                       </li>
                       <li class="flex items-start">
-                        <span class="bg-[#C77DFF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"></span>
+                        <span
+                          class="bg-[#C77DFF] w-2 h-2 mt-1.5 mr-2 flex-shrink-0 border border-black"
+                        ></span>
                         National Science Quiz Team
                       </li>
                     </ul>

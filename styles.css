@@ -3,26 +3,26 @@
    ======================================== */
 
 /* Import bold fonts */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
 
 :root {
   /* Neobrutalist Color Palette */
   --neo-black: #000000;
-  --neo-white: #FFFEF0;
-  --neo-yellow: #FFE600;
-  --neo-pink: #FF6B9D;
-  --neo-blue: #00D4FF;
-  --neo-green: #00FF94;
-  --neo-orange: #FF8A00;
-  --neo-purple: #C77DFF;
-  --neo-red: #FF4444;
-  
+  --neo-white: #fffef0;
+  --neo-yellow: #ffe600;
+  --neo-pink: #ff6b9d;
+  --neo-blue: #00d4ff;
+  --neo-green: #00ff94;
+  --neo-orange: #ff8a00;
+  --neo-purple: #c77dff;
+  --neo-red: #ff4444;
+
   /* Shadow offset */
   --shadow-sm: 3px 3px 0px var(--neo-black);
   --shadow-md: 5px 5px 0px var(--neo-black);
   --shadow-lg: 8px 8px 0px var(--neo-black);
   --shadow-xl: 12px 12px 0px var(--neo-black);
-  
+
   /* Border */
   --border-thin: 2px solid var(--neo-black);
   --border-thick: 4px solid var(--neo-black);
@@ -36,7 +36,7 @@ html.scroll-smooth {
 }
 
 body {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   line-height: 1.6;
   background-color: var(--neo-white) !important;
 }
@@ -108,7 +108,7 @@ body {
   background: var(--neo-white);
   border: var(--border-thick);
   box-shadow: var(--shadow-sm);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
@@ -141,11 +141,21 @@ body {
   letter-spacing: 0.05em;
 }
 
-.neo-tag-pink { background: var(--neo-pink); }
-.neo-tag-blue { background: var(--neo-blue); }
-.neo-tag-green { background: var(--neo-green); }
-.neo-tag-orange { background: var(--neo-orange); }
-.neo-tag-purple { background: var(--neo-purple); }
+.neo-tag-pink {
+  background: var(--neo-pink);
+}
+.neo-tag-blue {
+  background: var(--neo-blue);
+}
+.neo-tag-green {
+  background: var(--neo-green);
+}
+.neo-tag-orange {
+  background: var(--neo-orange);
+}
+.neo-tag-purple {
+  background: var(--neo-purple);
+}
 
 /* Neobrutalist Section */
 .neo-section {
@@ -162,7 +172,7 @@ body {
 
 /* Neobrutalist Heading */
 .neo-heading {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -171,7 +181,7 @@ body {
 }
 
 .neo-heading::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -4px;
   left: 0;
@@ -300,10 +310,18 @@ body {
   box-shadow: none;
 }
 
-.neo-social-linkedin { background: var(--neo-blue); }
-.neo-social-github { background: var(--neo-purple); }
-.neo-social-email { background: var(--neo-pink); }
-.neo-social-whatsapp { background: var(--neo-green); }
+.neo-social-linkedin {
+  background: var(--neo-blue);
+}
+.neo-social-github {
+  background: var(--neo-purple);
+}
+.neo-social-email {
+  background: var(--neo-pink);
+}
+.neo-social-whatsapp {
+  background: var(--neo-green);
+}
 
 .dark .neo-social {
   border-color: var(--neo-white);
@@ -447,8 +465,12 @@ body {
 
 /* Marquee animation for fun */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .neo-marquee {
@@ -485,55 +507,55 @@ body {
     --shadow-xl: 6px 6px 0px var(--neo-black);
     --border-thick: 3px solid var(--neo-black);
   }
-  
+
   body {
     font-size: 15px;
   }
-  
+
   .neo-heading {
     font-size: 1.5rem !important;
   }
-  
+
   .neo-heading::after {
     height: 3px;
   }
-  
+
   .neo-section {
     padding: 1.25rem !important;
     margin-bottom: 1rem !important;
   }
-  
+
   .neo-card {
     padding: 1rem !important;
   }
-  
+
   .neo-card:hover {
     transform: none;
   }
-  
+
   .neo-project:hover {
     transform: none;
   }
-  
+
   .neo-social {
     width: 44px;
     height: 44px;
   }
-  
+
   .neo-btn {
     padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
   }
-  
+
   .neo-tag {
     font-size: 0.65rem;
     padding: 0.25rem 0.5rem;
   }
-  
+
   .neo-badge {
     font-size: 0.65rem;
   }
-  
+
   .neo-nav-link {
     font-size: 1rem;
     padding: 0.75rem 1rem;
@@ -541,39 +563,39 @@ body {
     width: 100%;
     text-align: left;
   }
-  
+
   .neo-nav-link:hover {
     background: transparent;
     border-color: transparent;
   }
-  
+
   .neo-testimonial::before {
     font-size: 50px;
     top: -10px;
     left: 15px;
   }
-  
+
   .neo-progress-bg {
     height: 12px;
   }
-  
+
   .neo-profile-img {
     padding: 4px;
   }
-  
+
   .neo-input {
     padding: 0.75rem !important;
     font-size: 16px; /* Prevents zoom on iOS */
   }
-  
+
   .neo-footer {
     padding: 1.5rem 1rem;
   }
-  
+
   .neo-footer p {
     font-size: 0.875rem;
   }
-  
+
   .neo-go-up {
     bottom: 1rem;
     right: 1rem;
@@ -590,33 +612,33 @@ body {
     --shadow-xl: 4px 4px 0px var(--neo-black);
     --border-thick: 2px solid var(--neo-black);
   }
-  
+
   .neo-heading {
     font-size: 1.25rem !important;
   }
-  
+
   .neo-section {
     padding: 1rem !important;
   }
-  
+
   .neo-card {
     box-shadow: var(--shadow-sm);
   }
-  
+
   .neo-social {
     width: 40px;
     height: 40px;
   }
-  
+
   .neo-tag {
     font-size: 0.6rem;
     padding: 0.2rem 0.4rem;
   }
-  
+
   .neo-testimonial {
     padding-top: 2.5rem !important;
   }
-  
+
   .neo-testimonial::before {
     font-size: 40px;
     top: -5px;
@@ -625,13 +647,21 @@ body {
 
 /* Lightbox animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* Modal improvements */
@@ -664,4 +694,119 @@ body {
 
 .neo-modal-content::-webkit-scrollbar-thumb:hover {
   background: var(--neo-orange);
+}
+
+/* ===== MOBILE MENU ===== */
+
+/* Hamburger Icon */
+.hamburger-icon {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--neo-black);
+  transition: all 0.3s ease;
+}
+
+.dark .hamburger-line {
+  background: var(--neo-white);
+}
+
+/* Hamburger to X animation */
+.hamburger-icon.active .hamburger-line:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.hamburger-icon.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-icon.active .hamburger-line:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* Mobile Menu Backdrop */
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 45;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-menu-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile Menu Panel */
+.mobile-menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85vw;
+  max-width: 320px;
+  height: 100vh;
+  background: var(--neo-white);
+  border-left: 4px solid var(--neo-black);
+  box-shadow: -8px 0 0 var(--neo-black);
+  z-index: 50;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.dark .mobile-menu-panel {
+  background: #1a1a2e;
+  border-color: var(--neo-white);
+  box-shadow: -8px 0 0 rgba(255, 254, 240, 0.3);
+}
+
+.mobile-menu-panel.active {
+  transform: translateX(0);
+}
+
+/* Mobile Nav Links */
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  border: 3px solid var(--neo-black);
+  background: var(--neo-white);
+  color: var(--neo-black);
+  transition: all 0.15s ease;
+}
+
+.dark .mobile-nav-link {
+  border-color: var(--neo-white);
+  background: #2d2d44;
+  color: var(--neo-white);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  background: var(--neo-yellow);
+  transform: translateX(-4px);
+  box-shadow: 4px 4px 0 var(--neo-black);
+}
+
+.dark .mobile-nav-link:hover,
+.dark .mobile-nav-link:active {
+  background: var(--neo-pink);
+  color: var(--neo-black);
 }
