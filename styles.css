@@ -758,13 +758,16 @@ body {
   width: 85vw;
   max-width: 320px;
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
   background: var(--neo-white);
   border-left: 4px solid var(--neo-black);
   box-shadow: -8px 0 0 var(--neo-black);
   z-index: 50;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .dark .mobile-menu-panel {
