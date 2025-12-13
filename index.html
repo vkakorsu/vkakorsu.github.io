@@ -66,15 +66,20 @@
           <div
             class="flex w-full items-center justify-between md:hidden mb-2 md:mb-0"
           >
-            <button
-              id="darkModeToggleMobileNav"
-              class="neo-btn px-3 py-2 text-sm flex items-center gap-2"
-            >
-              <i class="fas fa-sun dark:hidden"></i>
-              <i class="fas fa-moon hidden dark:inline"></i>
-              <span class="font-bold uppercase dark:hidden">Light</span>
-              <span class="font-bold uppercase hidden dark:inline">Dark</span>
-            </button>
+            <div class="flex items-center gap-1">
+              <span
+                class="bg-[#FFE600] border-2 border-black px-1.5 py-0.5 font-black text-sm"
+                >V</span
+              >
+              <span
+                class="bg-[#FF6B9D] border-2 border-black px-1.5 py-0.5 font-black text-sm"
+                >K</span
+              >
+              <span
+                class="bg-[#00D4FF] border-2 border-black px-1.5 py-0.5 font-black text-sm"
+                >A</span
+              >
+            </div>
             <button
               id="mobile-menu-button"
               class="neo-btn p-2 w-12 h-12 flex items-center justify-center"
@@ -1076,7 +1081,7 @@
             onclick="openProjectModal('foodrescue-connect')"
           >
             <img
-              src="assets/images/project_images/foodrescue.png"
+              src="assets/images/project_images/foodrescue_connect/foodrescue_connect.png"
               alt="FoodRescue Connect"
               class="w-full h-32 md:h-48 object-cover"
             />
@@ -1097,23 +1102,23 @@
           <!-- Cloud-Native Application -->
           <div
             class="neo-project bg-[#FFFEF0] dark:bg-[#2d2d44]"
-            onclick="openProjectModal('cloud-native-app')"
+            onclick="openProjectModal('tbss')"
           >
             <img
-              src="assets/images/cloud-native-app.jpg"
-              alt="Cloud-Native Application"
+              src="assets/images/project_images/tbss/tbss_homepage.png"
+              alt="TBSS"
               class="w-full h-32 md:h-48 object-cover"
             />
             <div class="p-4 md:p-6">
               <h3 class="text-base md:text-xl font-bold uppercase mb-2">
-                Cloud App
+                TBSS
               </h3>
               <p class="text-sm md:text-base mb-3 md:mb-4 line-clamp-2">
-                Scalable microservices on AWS.
+                Torchbearers Books & Stationery Services web app.
               </p>
               <div class="flex flex-wrap gap-1 md:gap-2">
-                <span class="neo-tag neo-tag-green px-2 py-0.5">AWS</span>
-                <span class="neo-tag neo-tag-orange px-2 py-0.5">Docker</span>
+                <span class="neo-tag neo-tag-blue px-2 py-0.5">Django</span>
+                <span class="neo-tag neo-tag-purple px-2 py-0.5">Redis</span>
               </div>
             </div>
           </div>

@@ -2,15 +2,11 @@
 function initDarkMode() {
   const darkModeToggle = document.getElementById("darkModeToggle");
   const darkModeToggleMobile = document.getElementById("darkModeToggleMobile");
-  const darkModeToggleMobileNav = document.getElementById("darkModeToggleMobileNav");
   const html = document.documentElement;
 
-  // All toggle buttons
-  const allToggles = [darkModeToggle, darkModeToggleMobile, darkModeToggleMobileNav];
-
-  // Helper to update sun/moon icon visibility for all toggles
+  // Helper to update sun/moon icon visibility for both toggles
   function updateIcons(isDark) {
-    allToggles.forEach((toggle) => {
+    [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
       if (!toggle) return;
       const sunIcon = toggle.querySelector(".fa-sun");
       const moonIcon = toggle.querySelector(".fa-moon");
@@ -21,15 +17,12 @@ function initDarkMode() {
     });
   }
 
-  // Helper to update toggle button UI for all toggles
+  // Helper to update toggle button UI for both toggles
   function updateToggleUI(isDark) {
-    allToggles.forEach((toggle) => {
+    [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
       if (!toggle) return;
       toggle.classList.toggle("dark-mode-on", isDark);
-      // Only apply background style to desktop toggle
-      if (toggle === darkModeToggle) {
-        toggle.style.backgroundColor = isDark ? "#3b82f6" : "#f3f4f6";
-      }
+      toggle.style.backgroundColor = isDark ? "#3b82f6" : "#f3f4f6";
       const toggleThumb = toggle.querySelector(".toggle-thumb");
       if (toggleThumb) {
         toggleThumb.style.transform = isDark
@@ -54,8 +47,8 @@ function initDarkMode() {
   }
   updateToggleUI(isDark);
 
-  // Add event listeners to all toggles
-  allToggles.forEach((toggle) => {
+  // Add event listeners to both toggles
+  [darkModeToggle, darkModeToggleMobile].forEach((toggle) => {
     if (!toggle) return;
     toggle.addEventListener("click", () => {
       const isDarkNow = html.classList.contains("dark");
@@ -213,8 +206,8 @@ const projectDetails = {
     github: "https://github.com/vkakorsu/foodrescue-connect",
     demo: "https://foodrescue-connect.com",
     images: [
-      "assets/images/project_images/foodrescue_provider.png",
-      "assets/images/project_images/foodrescue_recipient.png",
+      "assets/images/project_images/foodrescue_connect/foodrescue_provider.png",
+      "assets/images/project_images/foodrescue_connect/foodrescue_recipient.png",
     ],
     achievements: [
       "Implemented secure user authentication and admin controls",
@@ -224,21 +217,20 @@ const projectDetails = {
       "Suspension logic to prevent access for suspended users",
     ],
   },
-  "cloud-native-app": {
-    title: "Cloud-Native Application Development",
+  "tbss": {
+    title: "Torchbearers Books & Stationery Services (TBSS)",
     description:
-      "Built a scalable web application using AWS services, focusing on microservices architecture and containerization.",
-    technologies: ["AWS", "Docker", "Kubernetes"],
-    github: "https://github.com/vkakorsu/cloud-native-app",
+      "Full-stack Django web app for a Ghanaian bookshop featuring catalog browsing, staff picks, search suggestions, accounts/auth, cart and order flows, and production deployment via Gunicorn and Docker.",
+    technologies: ["Django", "Redis", "Celery", "Whitenoise", "Docker"],
+    github: "#",
     demo: "#",
-    images: [
-      "assets/images/cloud-native-app-1.jpg",
-      "assets/images/cloud-native-app-2.jpg",
-    ],
+    images: ["assets/images/project_images/tbss/tbss_homepage.png"],
     achievements: [
-      "Deployed to production with zero downtime",
-      "Achieved 99.9% uptime",
-      "Scaled to handle 1000+ concurrent users",
+      "Responsive storefront UI (catalog, staff picks, about)",
+      "Search with suggestions for books/authors/tags",
+      "Auth & account flows via django-allauth",
+      "Background task processing with Celery + Redis",
+      "Containerized deployment with Gunicorn",
     ],
   },
   "memory-allocator": {
